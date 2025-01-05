@@ -20,13 +20,11 @@ $startPosition = 9;
 
 for ($i = $peopleCount; $i > 0; $i--) {
     $currentMan = $data[0][$startPosition];
-
     foreach ($trimmedData as $row) {
         $value = $row[$startPosition];
         $debtors = $row[$startPosition + 2];
         if ($debtors == 'все') {
             $individualDebt = $value / $peopleCount;
-
             foreach ($peoples as $debtorName => $debts) {
                 if ($debtorName !== $currentMan) {
                     $peoples[$currentMan][$debtorName] = ($peoples[$currentMan][$debtorName] ?? 0) + $individualDebt;
@@ -35,7 +33,6 @@ for ($i = $peopleCount; $i > 0; $i--) {
         } elseif (!empty($debtors)) {
             $debtorsAr = explode('|', $debtors);
             $individualDebt = (int)$value / count($debtorsAr);
-
             foreach ($debtorsAr as $debtorName) {
                 if ($debtorName !== $currentMan) {
 
